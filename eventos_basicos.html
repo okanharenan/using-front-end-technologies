@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.4.js"></script>
+
+    <style>
+        h1 {
+            color: aqua;
+        }
+    </style>
+</head>
+
+<body onload="alert('o <body> acabou de ser carregado')">
+
+</body>
+<script type="text/javascript">
+    //*window.onload = function () {
+    //alert('Evento disparado ao final do carregamento da janela (window)')
+    // }
+
+    //evento disparado com jquery
+    $(function () {
+        alert('Evento disparado com jquery');
+        $('body').append('<div><h1>hello world</h1></div>');
+    });
+</script>
+
+</html>

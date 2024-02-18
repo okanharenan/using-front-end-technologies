@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 01</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.4.js"></script>
+
+</head>
+<div id="lipson">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+</div>
+
+<body>
+    <script type="text/javascript">
+        $('#lipson').append('<a id="link-alerta" href="pagina-inicial">link pagina inicial</a>')
+        $('#link-alerta').on('click', function (event) {
+            event.preventDefault()
+            alert('o novo link, inserido com jquery foi clicado')
+
+        })
+    </script>
+</body>
+
+</html>
