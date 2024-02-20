@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.4.js"></script>
+
+</head>
+
+<body>
+    <div>
+        <form action="">
+            <input type="text" id="cep" placeholder="Dígite seu cep">
+            <input type="buttn" id="btn" value="Pesquisa" maxlength=5>
+        </form>
+    </div>
+    <div class="container">
+        <p id="result"></p>
+    </div>
+</body>
+<script type="text/javascript">
+    $(function () {
+        $('#btn').on('click', function () {
+            var cep = $('#cep').val()
+
+            $.ajax({
+                url: `https://viacep.com.br/ws/${cep}/json/`,
+                type: 'get',
+
+            })
+
+                .done(function (results) {
+                    console.log(JSON.stringify(results));
+                    $('#result').append(`Cep: ${results.cep}<br>, Cidade: ${results.localidade}<br>,  UF: ${results.uf}`)
+                })
+
+                .fail(function (xhr, textStatus, msg) {
+                    console.log("Ocorreu um erro: " + msg);
+                })
+        });
+    })
+</script>
+
+</html>
