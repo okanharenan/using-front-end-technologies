@@ -33,7 +33,7 @@
 
                 .done(function (results) {
                     console.log(JSON.stringify(results));
-                    $('#result').append(`Cep: ${results.cep}<br>, Cidade: ${results.localidade}<br>,  UF: ${results.uf}`)
+                    $('#result').append(`Cep: ${results.cep}, <br> Cidade: ${results.localidade}, <br>  UF: ${results.uf}`)
                 })
 
                 .fail(function (xhr, textStatus, msg) {
