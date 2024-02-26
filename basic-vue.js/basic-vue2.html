@@ -6,27 +6,124 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <style>
+        :root {
+            --color-primary: #269fe6;
+            --color-primary-hover: #2086c2;
+            --color-primary-dark: #13141f;
+            --color-primary-dark-hover: #212336;
+            --color-primary-light: #d4ecfa;
+            --color-primary-light-hover: #bdd8e7;
+
+            --color-white: #fff;
+            --color-black: #000;
+
+            --color-dark-text: #444;
+            --color-info-light: #cce5ff;
+            --color-debug-light: #cce5ff;
+            --color-success-light: #d4edda;
+            --color-alert-light: #fff3cd;
+            --color-warning-light: #fff3cd;
+            --color-error-light: #f8d7da;
+
+            --color-info-dark: #4d86c4;
+            --color-debug-dark: #4d86c4;
+            --color-success-dark: #4a9c5d;
+            --color-alert-dark: #927f40;
+            --color-warning-dark: #927f40;
+            --color-error-dark: #da525d;
+
+            --color-gray-0: #f9f9f9;
+            --color-gray-1: #e0e0e0;
+            --color-gray-2: #c7c7c7;
+            --color-gray-3: #aeaeae;
+            --color-gray-4: #959595;
+            --color-gray-5: #7d7d7d;
+            --color-gray-6: #646464;
+            --color-gray-7: #4b4b4b;
+            --color-gray-8: #323232;
+            --color-gray-9: #191919;
+
+            --font-primary: sans-serif;
+            --font-headings: 'Roboto Slab', serif;
+
+            --spacing-gutter-medium: 3rem;
+            --spacing-gutter-large: 4rem;
+        }
+
+        [v-clok] {
+            display: none;
+        }
+
+        #app {
+            display: flex;
+            flex-flow: row nowrap;
+            width: 50rem;
+            height: 20rem;
+            border: 2px solid black;
+            border-radius: 4px;
+            background: #d96464;
+            margin: 0 auto;
+        }
+
+        #wrapper {
+            margin: 100px 55px;
+        }
+
+        #previa {
+            border: 2px solid white;
+            height: 2rem;
+            width: 20rem;
+            border-radius: 3rem;
+            padding: 100px 30px;
+            margin: 70px 100px;
+            background: #cecece;
+
+        }
+
+        #foto {
+
+            padding: 30px 0 0 200px;
+            background: white;
+            width: 1px;
+
+        }
+
+        .input-label {
+            border: 0.1rem solid var(--color-primary);
+            max-width: 64rem;
+            margin: 0 auto;
+            border-radius: 0.2rem;
+            position: relative;
+            background: var(--color-white);
+            box-shadow: 5px 5px 5px rgba(0, 0, 255, .2);
+        }
+    </style>
+
 </head>
 
 <body>
-    <div id="central">
-        <div id="formulario">
-            <label for="nome">Nome</label>
-            <input v-model="nome" type="text" name="nome" id="nome" placeholder="Dígite seu nome">
-
-            <label for="matricula">Matrícula</label>
-            <input v-model="matricula" type="text" id="matricula" placeholder="Dígite sua matrícula">
+    <div id="app" v-cloak>
+        <div id="wrapper">
+            <label for="nome">Nome:</label><br>
+            <input v-model="nome" type="text" class="input-label" name="nome" id="nome" placeholder="Dígite seu nome">
+            <br>
+            <br>
+            <label for="matricula">Matrícula: </label><br>
+            <input v-model="matricula" type="text" class="input-label" id="matricula"
+                placeholder="Dígite sua matrícula">
         </div>
         <div id="previa">
             <div id="cartao">
                 <div id="id-cartao">
-                    <span class="label-cartao">Nome:</span>
-                    <span class="dado-cartao">{{nome}}</span>
+                    <span class="label-cartao">Nome: </span><br>
+                    <span class="dado-cartao" v-test="nome"></span>
                     <br>
-                    <span class="label-cartao">Matrícula</span>
-                    <span class="dado-cartao">{{matricula}}</span>
+                    <span class="label-cartao">Matrícula: </span><br>
+                    <span class="dado-cartao" v-test="matricula"></span>
+                    <div id="foto">Foto</div>
                 </div>
-                <div id="foto">Foto</div>
+
             </div>
         </div>
     </div>
@@ -40,7 +137,7 @@
                 }
             },
 
-        }).mount('#central')
+        }).mount('#app')
     </script>
 </body>
 
