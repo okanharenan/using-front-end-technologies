@@ -6,6 +6,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        :root {
+            --color-primary: #269fe6;
+            --color-primary-hover: #2086c2;
+            --color-primary-dark: #13141f;
+            --color-primary-dark-hover: #212336;
+            --color-primary-light: #d4ecfa;
+            --color-primary-light-hover: #bdd8e7;
+
+            --color-white: #fff;
+            --color-black: #000;
+
+            --color-dark-text: #444;
+            --color-info-light: #cce5ff;
+            --color-debug-light: #cce5ff;
+            --color-success-light: #d4edda;
+            --color-alert-light: #fff3cd;
+            --color-warning-light: #fff3cd;
+            --color-error-light: #f8d7da;
+
+            --color-info-dark: #4d86c4;
+            --color-debug-dark: #4d86c4;
+            --color-success-dark: #4a9c5d;
+            --color-alert-dark: #927f40;
+            --color-warning-dark: #927f40;
+            --color-error-dark: #da525d;
+
+            --color-gray-0: #f9f9f9;
+            --color-gray-1: #e0e0e0;
+            --color-gray-2: #c7c7c7;
+            --color-gray-3: #aeaeae;
+            --color-gray-4: #959595;
+            --color-gray-5: #7d7d7d;
+            --color-gray-6: #646464;
+            --color-gray-7: #4b4b4b;
+            --color-gray-8: #323232;
+            --color-gray-9: #191919;
+
+            --font-primary: sans-serif;
+            --font-headings: 'Roboto Slab', serif;
+
+            --spacing-gutter-medium: 3rem;
+            --spacing-gutter-large: 4rem;
+        }
+
+
         body {
             padding: 0;
             margin: 0;
@@ -13,92 +58,126 @@
         }
 
         h1 {
-            position: absolute;
             color: aqua;
             text-decoration: line-through yellow;
             text-align: center;
             font-size: 4rem;
         }
 
-        .central {
-            display: flex;
-            border: 2px solid #cecece;
-            width: 64rem;
-            height: 55rem;
-            margin: auto;
+        .app {
+            display: block;
+            align-items: center;
             justify-content: center;
+            height: 66rem;
+            width: 65rem;
+            margin: 0 auto;
+
+
+
         }
 
-        #afazer {
-            position: relative;
-            background: white;
-            margin-top: 200px;
-            border: 2px solid #cecece;
-            border-radius: 12px;
-            box-shadow: 5px 5px 5px rgba(0, 0, 255, .2);
+        .form-wrapp {
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
             width: 40rem;
-            height: 7rem;
-            justify-content: space-between;
+            height: 5rem;
+            align-items: center;
+            border: 2px solid #cecece;
+            box-shadow: -5px 5px 5px rgba(0, 0, 255, .3);
         }
 
         #input-text {
-            margin: 40px 10px;
             width: 400px;
             height: 30px;
-            border-color: #cecece;
-            background: white;
+            border: none;
+            box-shadow: 3px 3px 3px rgba(0, 0, 255, .1);
         }
 
         #button-default {
-            background: rgb(72, 158, 198);
-            color: white;
+            margin-left: 5px;
+            background: blueviolet;
+            width: 80px;
+            height: 45px;
             border: none;
-            border-radius: 4px;
-            width: 70px;
-            height: 40px;
-            transition: all 300ms ease-in;
-        }
-
-        #button-default:hover {
-            background: palevioletred;
-        }
-
-        #checkbox {
-            background: white;
-        }
-
-        #checkbox:hover {
-            background: blue;
+            box-shadow: 2px 2px 2px rgb(248, 139, 233, .5);
+            color: white;
+            border-radius: 9px;
         }
 
         #contagem {
-            margin-top: -30px;
-            margin-left: 20px;
-            color: #b3aeae;
+            margin-left: 440px;
+            margin-top: -21px;
         }
 
-        span {
-            color: blue;
+
+        #list-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+
+        }
+
+        .item {
+            flex-basis: calc(33.33% - 20px);
+            height: 20rem;
+            margin: 10px;
+            box-sizing: border-box;
+            background: linear-gradient(to bottom, var(--color-primary), transparent 50%);
+            /* Adiciona um degradê da cor principal para transparente */
+        }
+
+        .item.importante {
+            background: red;
+            color: white;
+        }
+
+        .item.feito {
+            background-color: #f0f0f0;
+            color: gray;
+            text-decoration: line-through;
+        }
+
+        .item {
+            background: yellow;
+        }
+
+        .texto-item {
+            font-size: 30px;
+            font-family: var(--font-primary);
+            text-align: center;
+            margin-top: 50%;
         }
     </style>
 </head>
 
 <body>
-    <div class="central">
-        <h1>TODO-LIST</h1>
-        <div id="afazer">
-            <input type="text" id="input-text" v-model="TextNewItem" @keyup.enter="SaveNewItem" maxlength=20>
-            <input type="checkbox" name="" id="checkbox" v-model="NewItemImportant"> <span>Importante</span>
-            <input type="button" id="button-default" v-model="SaveNewItem" v-if="TextNewItem" value="Salvar">
+
+    <div class="app">
+        <div class="wrapper">
+            <h1>TODO LIST</h1>
+            <div class="form-wrapp">
+                <div class="o-fomr">
+                    <input type="text" maxlength=20 id="input-text" v-model="TextNewItem" @Keyup.enter="SaveNewItem">
+                </div>
+                <div>
+                    <input type="checkbox" name="" class="item.importante" v-model="NewItemImportant">
+                    <label for="is-importante">Importante</label><br>
+                </div>
+                <button v-on:click="SaveNewItem" id="button-default" v-if="TextNewItem.length > 0">
+                    Salvar
+                </button>
+            </div>
             <p id="contagem">{{qtdTyped}}/20</p>
         </div>
-
-
         <div id="list-wrapper">
-            <div class="item" v-bind:class="{importante:item.importante, feito:item.feito}" v-for="item in lista">
-                <p class="text-item" v-text="item.text" v-on:click="item.feito = !item.feito"></p>
+            <div class="item" v-bind:class="{importante: item.importante, feito: item.feito}" v-for="item in lista"
+                v-on:click="item.feito = !item.feito" :key="item.id">
+                <p class="texto-item">{{item.text}}</p>
             </div>
         </div>
+
     </div>
     <script src="https://unpkg.com/vue@3.0.0-rc.5/dist/vue.global.js"></script>
     <script>
@@ -109,7 +188,7 @@
                         let NewItem = {
                             id: new Date().getTime(),
                             text: this.TextNewItem,
-                            important: this.NewItemImportant,
+                            importante: this.NewItemImportant,
                             feito: false
                         };
                         this.lista.push(NewItem);
@@ -130,7 +209,7 @@
                     return this.TextNewItem.length;
                 }
             }
-        }).mount(".central")
+        }).mount(".app")
     </script>
 </body>
 
